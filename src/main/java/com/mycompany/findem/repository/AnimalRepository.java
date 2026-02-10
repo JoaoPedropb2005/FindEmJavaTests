@@ -15,11 +15,25 @@ import java.util.List;
 public class AnimalRepository {
     
     private List<FormAnimal> dataAnimal = new ArrayList<>();
-    
+    private int id = 1;
     
     public void save(FormAnimal animal){
+        animal.setId(id++);
         dataAnimal.add(animal);
-        System.out.println("Animal salvo no banco local!");
+        System.out.println("Animal salvo no banco local com ID: !" + animal.getId());
+    }
+    
+    public List<FormAnimal> findAll(){
+        return new ArrayList<>(dataAnimal);
+    }
+    
+    public FormAnimal findById(int id){
+        for (FormAnimal animal : dataAnimal){
+            if(animal.getId() == id){
+                return animal;
+            }
+        }
+        return null;
     }
     
 }

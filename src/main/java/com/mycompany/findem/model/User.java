@@ -4,6 +4,9 @@
  */
 package com.mycompany.findem.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author jppb2
@@ -13,6 +16,9 @@ public class User {
     private String nome;
     private String email;
     private String password;
+    private String contato;
+    private boolean isLogado = false;
+    private List<FormAnimal> favoritos = new ArrayList<>();
 
     public String getNome() {
         return nome;
@@ -38,4 +44,27 @@ public class User {
         this.password = password;
     }    
     
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
+    }
+
+    public boolean getIsLogado(){
+        return isLogado;
+    }
+
+    public void setIsLogado(boolean isLogado){
+        this.isLogado = isLogado;
+    }
+    
+    public List<FormAnimal> getFavoritos(){
+        return favoritos;
+    }
+    
+    public void adicionarFavorito(FormAnimal animal){
+        this.favoritos.add(animal);
+    }
 }

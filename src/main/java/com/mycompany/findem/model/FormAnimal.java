@@ -10,6 +10,9 @@ package com.mycompany.findem.model;
  */
 public class FormAnimal {
     
+    private int id;
+    private User dono;
+    
     private String name;
     private String raca;
     private String especie;
@@ -17,6 +20,22 @@ public class FormAnimal {
     private String estado;
     private String cidade;
     private String ultimoLocalVisto;
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getDono() {
+        return dono;
+    }
+
+    public void setDono(User dono) {
+        this.dono = dono;
+    }
 
     public String getName() {
         return name;
