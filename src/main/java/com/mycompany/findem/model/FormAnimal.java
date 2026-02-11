@@ -1,0 +1,77 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.findem.model;
+
+/**
+ *
+ * @author jppb2
+ */
+public class FormAnimal {
+    
+    private String name;
+    private String raca;
+    private String especie;
+    private String categoria;
+    private String estado;
+    private String cidade;
+    private String ultimoLocalVisto;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
+    public void setRaca(String raca) {
+        this.raca = raca;
+    }
+
+    public String getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getUltimoLocalVisto() {
+        return ultimoLocalVisto;
+    }
+
+    public void setUltimoLocalVisto(String ultimoLocalVisto) {
+        this.ultimoLocalVisto = ultimoLocalVisto;
+    }
+
+}
