@@ -12,12 +12,12 @@ import java.util.List;
  * @author jppb2
  */
 public class User {
-    
+
     private String nome;
     private String email;
     private String password;
     private String contato;
-    private boolean isLogado = false;
+    private boolean logado = false;
     private List<FormAnimal> favoritos = new ArrayList<>();
 
     public String getNome() {
@@ -42,8 +42,8 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }    
-    
+    }
+
     public String getContato() {
         return contato;
     }
@@ -52,19 +52,25 @@ public class User {
         this.contato = contato;
     }
 
-    public boolean getIsLogado(){
-        return isLogado;
+    public boolean isLogado() {
+        return logado;
     }
 
-    public void setIsLogado(boolean isLogado){
-        this.isLogado = isLogado;
+    public void setLogado(boolean logado) {
+        this.logado = logado;
     }
-    
-    public List<FormAnimal> getFavoritos(){
+
+    public List<FormAnimal> getFavoritos() {
         return favoritos;
     }
-    
-    public void adicionarFavorito(FormAnimal animal){
-        this.favoritos.add(animal);
+
+    public void adicionarFavorito(FormAnimal animal) {
+        if (!favoritos.contains(animal)) {
+            favoritos.add(animal);
+        }
+    }
+
+    public void removerFavorito(FormAnimal animal) {
+        favoritos.remove(animal);
     }
 }

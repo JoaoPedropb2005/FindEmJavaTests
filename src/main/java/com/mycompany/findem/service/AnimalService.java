@@ -23,7 +23,7 @@ public class AnimalService {
 
     public void cadastrarAnimal(FormAnimal animal, User autor) {
 
-        if (autor == null || !autor.getIsLogado()) {
+        if (autor == null || !autor.isLogado()) {
             throw new SecurityException("O usuário precisa estar logado para cadastrar o animal.");
         }
 
@@ -70,7 +70,7 @@ public class AnimalService {
     }
 
     public void favoritarAnimal(int idAnimal, User autor) {
-        if (!autor.getIsLogado()) {
+        if (!autor.isLogado()) {
             throw new SecurityException("Faça login para favoritar um animal.");
         }
 
