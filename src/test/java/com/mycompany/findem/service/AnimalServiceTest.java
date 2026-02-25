@@ -20,10 +20,12 @@ import com.mycompany.findem.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
@@ -154,4 +156,78 @@ public class AnimalServiceTest {
         verify(animalRepository, never()).save(any(FormAnimal.class));
     }
 
+    /*****************************
+    * 
+    * Testes de Permissão e Autenticação para acesso a funcionalidades
+    * 
+    ******************************/
+    
+    @Test
+    void publicarAnuncio_SemEstarLogado_DeveLancarExcecao() {
+        User usuarioNaoLogado = new User();
+        usuarioNaoLogado.setLogado(false);
+
+        SecurityException exception = assertThrows(SecurityException.class, () -> {
+            animalService.cadastrarAnimal(formCompleto, usuarioNaoLogado);
+        });
+
+        assertEquals("O usuário precisa estar logado para cadastrar o animal.", exception.getMessage());
+        verify(animalRepository, never()).save(any(FormAnimal.class));
+    }
+
+    @Test
+    void favoritarAnimal_Logado_DeveConseguirFazer() {
+        int idAnimal = 1;
+        when(animalRepository.findById(idAnimal)).thenReturn(formCompleto);
+
+        animalService.favoritarAnimal(idAnimal, usuarioLogado);
+
+        verify(animalRepository, times(1)).findById(idAnimal);
+    }
+
+    @Test
+    void favoritarAnimal_SemEstarLogado_DeveLancarExcecao() {
+        int idAnimal = 1;
+        User usuarioNaoLogado = new User();
+        usuarioNaoLogado.setLogado(false);
+
+        SecurityException exception = assertThrows(SecurityException.class, () -> {
+            animalService.favoritarAnimal(idAnimal, usuarioNaoLogado);
+        });
+
+        assertEquals("Faça login para favoritar um animal.", exception.getMessage());
+        verify(animalRepository, never()).findById(anyInt());
+    }
+
+    @Test
+    void entrarEmContato_Logado_DeveRetornarContato() {
+        int idAnimal = 1;
+        
+        User dono = new User();
+        dono.setNome("Maria");
+        dono.setContato("81999999999");
+        formCompleto.setDono(dono);
+
+        when(animalRepository.findById(idAnimal)).thenReturn(formCompleto);
+
+        String resultado = animalService.entrarEmContato(idAnimal, usuarioLogado);
+
+        assertEquals("Contato do dono Maria: 81999999999", resultado);
+        verify(animalRepository, times(1)).findById(idAnimal);
+    }
+
+    @Test
+    void entrarEmContato_SemEstarLogado_DeveLancarExcecao() {
+        int idAnimal = 1;
+        User usuarioNaoLogado = new User();
+        usuarioNaoLogado.setLogado(false);
+
+        SecurityException exception = assertThrows(SecurityException.class, () -> {
+            animalService.entrarEmContato(idAnimal, usuarioNaoLogado);
+        });
+
+        assertEquals("Você precisa estar logado para entrar em contato com o dono.", exception.getMessage());
+        verify(animalRepository, never()).findById(anyInt());
+    }
+    
 }

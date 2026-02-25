@@ -72,9 +72,9 @@ public class AnimalController {
         }
     }
 
-    public String pegarContato(int id) {
+    public String pegarContato(int id, User usuario) {
         try {
-            return service.entrarEmContato(id);
+            return service.entrarEmContato(id, usuario);
         } catch (Exception e) {
             return e.getMessage();
         }

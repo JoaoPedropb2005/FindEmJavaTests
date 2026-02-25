@@ -114,7 +114,7 @@ public class FindEm {
                     System.out.print("Digite o ID do animal para ver o contato: ");
                     int idContato = scanner.nextInt();
 
-                    System.out.println(controller.pegarContato(idContato));
+                    System.out.println(controller.pegarContato(idContato, user1));
                     break;
 
                case 5:

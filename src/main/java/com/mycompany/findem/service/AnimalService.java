@@ -86,8 +86,11 @@ public class AnimalService {
 
     }
     
-    public String entrarEmContato(int id){
-        
+    public String entrarEmContato(int id, User autor) {
+        if (autor == null || !autor.isLogado()) {
+            throw new SecurityException("Você precisa estar logado para entrar em contato com o dono.");
+        }
+
         FormAnimal animal = repository.findById(id);
         
         if(animal == null){
@@ -95,9 +98,7 @@ public class AnimalService {
         }
         
         User dono = animal.getDono();
-        
         return "Contato do dono " + dono.getNome() + ": " + dono.getContato();
-        
     }
 
 }
