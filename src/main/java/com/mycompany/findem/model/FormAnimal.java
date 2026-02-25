@@ -14,8 +14,8 @@ public class FormAnimal {
     private User dono;
     private String name;
     private String raca;
-    private String especie;
-    private String categoria;
+    private CategoriaAnuncio categoria;
+    private Especie especie;
     private String estado;
     private String cidade;
     private String ultimoLocalVisto;
@@ -52,21 +52,23 @@ public class FormAnimal {
         this.raca = raca;
     }
 
-    public String getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(String especie) {
-        this.especie = especie;
-    }
-
-    public String getCategoria() {
+    public CategoriaAnuncio getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(CategoriaAnuncio categoria) {
         this.categoria = categoria;
     }
+
+    public Especie getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(Especie especie) {
+        this.especie = especie;
+    }
+
+    
 
     public String getEstado() {
         return estado;

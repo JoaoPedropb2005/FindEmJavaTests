@@ -41,11 +41,11 @@ public class AnimalService {
             throw new IllegalArgumentException("A Raça é obrigatória.");
         }
 
-        if (animal.getEspecie() == null || animal.getEspecie().trim().isEmpty()) {
+        if (animal.getEspecie() == null) {
             throw new IllegalArgumentException("A espécie é obrigatória.");
         }
 
-        if (animal.getCategoria() == null || animal.getCategoria().trim().isEmpty()) {
+        if (animal.getCategoria() == null) {
             throw new IllegalArgumentException("A Categoria é obrigatória.");
         }
 

@@ -4,6 +4,8 @@
  */
 package com.mycompany.findem.controller;
 
+import com.mycompany.findem.model.CategoriaAnuncio;
+import com.mycompany.findem.model.Especie;
 import com.mycompany.findem.service.AnimalService;
 import com.mycompany.findem.model.FormAnimal;
 import com.mycompany.findem.model.User;
@@ -21,7 +23,7 @@ public class AnimalController {
         this.service = service;
     }
 
-    public String recebeForm(String nome, String raca, String especie, String categoria, String estado, String cidade, String ultimolocal, User autor) {
+    public String recebeForm(String nome, String raca, Especie especie, CategoriaAnuncio categoria, String estado, String cidade, String ultimolocal, User autor) {
 
         FormAnimal novoAnimal = new FormAnimal();
 

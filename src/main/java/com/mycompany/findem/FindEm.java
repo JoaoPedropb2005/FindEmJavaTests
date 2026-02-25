@@ -3,6 +3,8 @@ package com.mycompany.findem;
 import com.mycompany.findem.controller.AnimalController;
 import com.mycompany.findem.model.FormLogin;
 import com.mycompany.findem.model.User;
+import com.mycompany.findem.model.CategoriaAnuncio;
+import com.mycompany.findem.model.Especie;
 import com.mycompany.findem.repository.AnimalRepository;
 import com.mycompany.findem.repository.UserRepository;
 import com.mycompany.findem.service.AnimalService;
@@ -115,7 +117,7 @@ public class FindEm {
                     System.out.println(controller.pegarContato(idContato));
                     break;
 
-                case 5:
+               case 5:
                     if (user1 == null || !user1.isLogado()) {
                         System.out.println("Você precisa estar logado para realizar uma postagem");
                         break;
@@ -130,11 +132,25 @@ public class FindEm {
                     System.out.print("Raça: ");
                     String raca = scanner.nextLine();
 
-                    System.out.print("Espécie: ");
-                    String especie = scanner.nextLine();
+                    System.out.print("Espécie (CACHORRO, GATO, OUTRO): ");
+                    String especieStr = scanner.nextLine().toUpperCase();
+                    Especie especieEnum = null;
+                    try {
+                        especieEnum = Especie.valueOf(especieStr);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Erro: Espécie inválida! Postagem cancelada.");
+                        break;
+                    }
 
-                    System.out.print("Categoria: ");
-                    String categoria = scanner.nextLine();
+                    System.out.print("Categoria (PERDIDO, ENCONTRADO, ADOCAO): ");
+                    String categoriaStr = scanner.nextLine().toUpperCase();
+                    CategoriaAnuncio categoriaEnum = null;
+                    try {
+                        categoriaEnum = CategoriaAnuncio.valueOf(categoriaStr);
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("Erro: Categoria inválida! Postagem cancelada.");
+                        break;
+                    }
 
                     System.out.print("Estado (UF): ");
                     String estado = scanner.nextLine();
@@ -146,7 +162,7 @@ public class FindEm {
                     String local = scanner.nextLine();
 
                     String msgCadastro = controller.recebeForm(
-                            nome, raca, especie, categoria,
+                            nome, raca, especieEnum, categoriaEnum,
                             estado, cidade, local, user1
                     );
 

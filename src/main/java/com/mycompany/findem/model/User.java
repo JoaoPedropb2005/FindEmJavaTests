@@ -14,6 +14,7 @@ import java.util.List;
 public class User {
 
     private String nome;
+    private int id;
     private String email;
     private String password;
     private String contato;
@@ -26,6 +27,14 @@ public class User {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
