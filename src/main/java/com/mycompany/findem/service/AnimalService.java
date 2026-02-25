@@ -27,7 +27,6 @@ public class AnimalService {
             throw new SecurityException("O usuário precisa estar logado para cadastrar o animal.");
         }
 
-        animal.setDono(autor);
 
         if (animal == null) {
             throw new IllegalArgumentException("O formulário não pode estar vazio.");
@@ -60,6 +59,8 @@ public class AnimalService {
         if (animal.getUltimoLocalVisto() == null || animal.getUltimoLocalVisto().trim().isEmpty()) {
             throw new IllegalArgumentException("O Ultimo local visto é obrigatória.");
         }
+        
+        animal.setDono(autor);       
 
         repository.save(animal);
 
@@ -81,8 +82,6 @@ public class AnimalService {
         }
 
         autor.adicionarFavorito(animal);
-        
-        System.out.println("Animal favoritado com sucesso!");
 
     }
     

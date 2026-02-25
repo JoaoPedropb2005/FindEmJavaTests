@@ -86,7 +86,7 @@ public class AnimalServiceTest {
 
     @Test
     void postagemDeAnimalComRacaVazia_DeveLancarExcecao() {
-        formCompleto.setRaca(null);
+        formCompleto.setRaca("");
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             animalService.cadastrarAnimal(formCompleto, usuarioLogado);
@@ -121,8 +121,8 @@ public class AnimalServiceTest {
     }
 
     @Test
-    void postagemDeAnimalComEstadoNaoSelecionado_DeveLancarExcecao() {
-        formCompleto.setEstado("SELECIONE A CIDADE");
+    void postagemDeAnimalComEstadoVazio_DeveLancarExcecao() {
+        formCompleto.setEstado("");
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             animalService.cadastrarAnimal(formCompleto, usuarioLogado);
@@ -146,7 +146,7 @@ public class AnimalServiceTest {
 
     @Test
     void postagemDeAnimalComUltimoLocalVazio_DeveLancarExcecao() {
-        formCompleto.setUltimoLocalVisto(null);
+        formCompleto.setUltimoLocalVisto("");
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
             animalService.cadastrarAnimal(formCompleto, usuarioLogado);

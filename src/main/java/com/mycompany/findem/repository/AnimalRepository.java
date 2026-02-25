@@ -12,28 +12,31 @@ import java.util.List;
  *
  * @author jppb2
  */
-public class AnimalRepository {
+public interface AnimalRepository {
     
-    private List<FormAnimal> dataAnimal = new ArrayList<>();
-    private int id = 1;
+//    private List<FormAnimal> dataAnimal = new ArrayList<>();
+//    private int id = 1;
     
-    public void save(FormAnimal animal){
-        animal.setId(id++);
-        dataAnimal.add(animal);
-        System.out.println("Animal salvo no banco local com ID: !" + animal.getId());
-    }
+    public void save(FormAnimal animal);
+//    {
+//        animal.setId(id++);
+//        dataAnimal.add(animal);
+//        System.out.println("Animal salvo no banco local com ID: !" + animal.getId());
+//    }
     
-    public List<FormAnimal> findAll(){
-        return new ArrayList<>(dataAnimal);
-    }
+    public List<FormAnimal> findAll();
+//    {
+//        return new ArrayList<>(dataAnimal);
+//    }
     
-    public FormAnimal findById(int id){
-        for (FormAnimal animal : dataAnimal){
-            if(animal.getId() == id){
-                return animal;
-            }
-        }
-        return null;
-    }
+    public FormAnimal findById(int id);
+//    {
+//        for (FormAnimal animal : dataAnimal){
+//            if(animal.getId() == id){
+//                return animal;
+//            }
+//        }
+//        return null;
+//    }
     
 }

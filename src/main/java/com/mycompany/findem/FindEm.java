@@ -1,3 +1,4 @@
+/*
 package com.mycompany.findem;
 
 import com.mycompany.findem.controller.AnimalController;
@@ -184,3 +185,4 @@ public class FindEm {
         }
     }
 }
+*/
